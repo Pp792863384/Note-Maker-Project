@@ -7,12 +7,17 @@ const app= express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(mongodbURI).then(()=>{
-    console.log("Connected to MongoDB");
-}).catch((err)=>{
-    console.log("Error connecting to MongoDB:", err);
-})
+
+mongoose.connect(process.env.mongodbURI);
+
+// mongoose.connect(mongodbURI).then(()=>{
+//     console.log("Connected to MongoDB");
+// }).catch((err)=>{
+//     console.log("Error connecting to MongoDB:", err);
+// })
 app.use('/', router);
-app.listen(port || 8080, ()=>{
-    console.log(`Server is running on port ${port}`);
-})
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
