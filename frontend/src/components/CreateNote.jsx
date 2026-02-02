@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./CreateNote.module.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
 export default function CreateNote({ onCreated }) {
   const navigate = useNavigate();
 
@@ -40,7 +41,7 @@ export default function CreateNote({ onCreated }) {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8080/notes",
+        `${API_URL}/notes`,
         { title: title.trim(), content: content.trim() },
         {
           headers: {
