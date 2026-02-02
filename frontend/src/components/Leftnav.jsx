@@ -62,7 +62,7 @@ export default function Leftnav({ onSelectNote, selectedNoteId }) {
     setMigrating(true);
     setErr('');
     try {
-      const res = await axios.post(`${API_BASE}/notes/migrate`, {}, {
+      const res = await axios.post(`${API_URL}/notes/migrate`, {}, {
         headers: {
           'Content-Type': 'application/json',
           authorization: `Bearer ${token}`,
