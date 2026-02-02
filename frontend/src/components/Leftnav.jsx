@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CustomButton from './CustomButton.jsx';
 
-const API_BASE = 'http://localhost:8080';
+const API_Url = import.meta.env.VITE_API_URL;
 
 export default function Leftnav({ onSelectNote, selectedNoteId }) {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function Leftnav({ onSelectNote, selectedNoteId }) {
     if (!token) return;
     try {
       setErr('');
-      const response = await axios.get(`${API_BASE}/notes`, {
+      const response = await axios.get(`${API_URL}/notes`, {
         headers: {
           'Content-Type': 'application/json',
           authorization: `Bearer ${token}`,
