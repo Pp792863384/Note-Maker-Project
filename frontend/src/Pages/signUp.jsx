@@ -3,6 +3,8 @@ import styles from "./Login.module.css";
 import CustomButton from "../components/CustomButton.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 export default function signUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,9 +44,11 @@ export default function signUp() {
     setErr("");
 
     console.log(name, email, password, role, phone);
-    let payload = { name, email, password, role, phone };
+    // let payload = { name, email, password, role, phone };
     try {
-      let res = await axios.post("http://localhost:8080/register", payload, {
+      const res = await axios.post(
+        `${API_URL}/register`,
+        { name, email, password, role, phone }, {
         headers: {
           "Content-Type": "application/json",
         },
