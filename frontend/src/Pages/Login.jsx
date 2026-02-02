@@ -3,11 +3,13 @@ import styles from './Login.module.css'
 import CustomButton from '../components/CustomButton.jsx'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+
 export default function Login() {
   let navigate= useNavigate();
   const [email, setEmail]=useState("");
   const [password, setPassword]=useState("");
   const [err, setErr]=useState("");
+
   const handleSubmit= async (e)=>{
     e.preventDefault();
     setErr("");
@@ -21,7 +23,12 @@ export default function Login() {
   }
   
   try {
-    let res= await axios.post("http://localhost:8080/login",{email,password},{
+    const API_URL = import.meta.env.VITE_API_URL;
+
+let res = await axios.post(
+  `${API_URL}/login`,
+  { email, password },
+  {
       headers:{
         "Content-Type":"application/json" 
       }
