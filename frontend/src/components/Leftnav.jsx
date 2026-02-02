@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CustomButton from './CustomButton.jsx';
 
-const API_Url = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Leftnav({ onSelectNote, selectedNoteId }) {
   const navigate = useNavigate();
