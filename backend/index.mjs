@@ -1,5 +1,6 @@
 import express from 'express';
-import {mongodbURI, port, secret_token} from './config.mjs';
+// import {mongodbURI, port, secret_token} from './config.mjs';
+
 import mongoose from 'mongoose';
 import cors from 'cors';
 import router from './src/routes/route.mjs';
