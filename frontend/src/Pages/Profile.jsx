@@ -4,6 +4,7 @@ import axios from 'axios'
 import CustomButton from '../components/CustomButton';
 import Navigation from '../components/Navigation.jsx'
 import {useNavigate} from 'react-router-dom'
+const API_URL = import.meta.env.VITE_API_URL;
 export default function Profile() {
   let navigate= useNavigate();
   let [err, setErr] = useState("");
@@ -15,7 +16,7 @@ export default function Profile() {
   }, []);
   async function fetchData(){
     try {
-      let res = await axios.get(`http://localhost:8080/profile/${id}`,{
+      let res = await axios.get(`${API_URL}/profile/${id}`,{
         headers:{
           "Content-Type":"application/json",
           "authorization":`Bearer ${token.token}`
